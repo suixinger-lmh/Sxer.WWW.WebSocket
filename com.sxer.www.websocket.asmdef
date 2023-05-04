@@ -1,5 +1,5 @@
 {
-    "name": "sxer.www.websocket",
+    "name": "com.sxer.www.websocket",
     "references": [
         "GUID:8b65d8710c3b04373a41cbf6b777ee65"
     ],
