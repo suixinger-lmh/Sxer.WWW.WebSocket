@@ -8,10 +8,11 @@ public class Test : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        UnityWebSocketServer.OpenWebSocketServer("ws://127.0.0.1:5566");
+
+
         connector = gameObject.AddComponent<UnityWebSocketConnector>();
-        connector.InitConnector("wss://echo.websocket.events",(str)=> {
-            Debug.LogError(str);
-        });
+        connector.InitWebSocket("ws://127.0.0.1:5566");
     }
 
     // Update is called once per frame
@@ -21,5 +22,12 @@ public class Test : MonoBehaviour
         {
             connector.SendWebSocketMessage("111");
         }
+
+        if (Input.GetKey(KeyCode.U))
+        {
+            UnityWebSocketServer.CloseWebSocketServer();
+        }
     }
+
+    
 }

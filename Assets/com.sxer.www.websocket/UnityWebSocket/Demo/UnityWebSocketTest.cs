@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
-using UnityWebSocket;
 
-namespace Sxer.WWW.WebSocket
+namespace UnityWebSocket.Demo
 {
-    public class UnityWebSocketConnector : MonoBehaviour
+    public class UnityWebSocketTest : MonoBehaviour
     {
         public string address = "ws://127.0.0.1:5566";
         public string sendText = "Hello UnityWebSocket!";
@@ -16,17 +15,16 @@ namespace Sxer.WWW.WebSocket
             try
             {
                 address = ip;
-                socket = new UnityWebSocket.WebSocket(address);
+                socket = new WebSocket(address);
                 socket.OnOpen += Socket_OnOpen;
                 socket.OnMessage += Socket_OnMessage;
                 socket.OnClose += Socket_OnClose;
                 socket.OnError += Socket_OnError;
                 AddLog("建立连接...");
                 socket.ConnectAsync();
-            }
-            catch (System.Exception ex)
+            }catch(System.Exception ex)
             {
-                Debug.LogError("websocket连接失败！ex:" + ex.Message);
+                Debug.LogError("websocket连接失败！ex:"+ex.Message);
             }
         }
 
@@ -105,6 +103,5 @@ namespace Sxer.WWW.WebSocket
         {
             CloseWebSocket();
         }
-
     }
 }
